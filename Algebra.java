@@ -93,15 +93,28 @@ public class Algebra {
 
 	// Returns the integer part of x1 / x2 
 	public static int div(int x1, int x2) {
+		boolean isNegative = (x1 < 0) != (x2 < 0);
+		int absX1 = x1;
+		if (x1 < 0){
+			absX1 = minus(0,x1);
+		}
+		int absX2 = x2;
+		if (x2 < 0){
+			absX2 = minus(0,absX2);
+		}
 		int q = 0;
-		int d = x1;
-		while (d >= x2){
-			d = minus(d,x2);
+		int d = absX1;
+		while (d >= absX2){
+			d = minus(d,absX2);
 			q++;
+		}
+		if (isNegative){
+			return minus(0,q);
 		}
 		return q;
 	}
-	
+
+
 		
 	
 
